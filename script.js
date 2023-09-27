@@ -41,15 +41,25 @@ savolar = [
     natija: "a",
   },
 ];
-// let savolQosh = savolar.push({
-//   savol: prompt(`savol kiriting`),
-//   javoblar: [],
-//   natija: prompt(`to'ri javob qaysi kalitda`),
-// });
+//////////////////////////////////////////////////////////////////
+let number = +prompt(
+  `Nechta savol kiritasiz savol qo'shmoqchi bo'lmasangiz 0 ni kiriting`
+);
+let savolQosh;
+let arr_1;
+for (let i = 0; i < number; i++) {
+  arr_1 = {
+    savol: prompt(`savol kiriting`),
+    javoblar: [],
+    natija: prompt(`to'ri javob qaysi kalitda`),
+  };
 
-// for (let i = 0; i < 5; i++) {
-//   savolQosh.javoblar.push(prompt(`javoblarni "a:javob" ko'rinishida yozing`));
-// }
+  for (let i = 0; i < 4; i++) {
+    savolQosh = prompt(`javoblarni "a:javob" ko'rinishida yozing`);
+    arr_1.javoblar.push(savolQosh);
+  }
+  savolar.push(arr_1);
+}
 ////////////////////////////////////////////////////////////////////////////////////////
 
 let set = new Set();
