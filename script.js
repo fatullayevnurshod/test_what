@@ -10,8 +10,10 @@
 
 // let son = natija(savol);
 // alert(`to'g'ri javoblar soni ${son}`);
+/////////////////////////////////////////////////////////////////////////////////////////
 
 let start = new Date();
+
 savolar = [
   {
     savol: `o'zbekistonda nechta viloyat bor`,
@@ -39,24 +41,49 @@ savolar = [
     natija: "a",
   },
 ];
+// let savolQosh = savolar.push({
+//   savol: prompt(`savol kiriting`),
+//   javoblar: [],
+//   natija: prompt(`to'ri javob qaysi kalitda`),
+// });
 
+// for (let i = 0; i < 5; i++) {
+//   savolQosh.javoblar.push(prompt(`javoblarni "a:javob" ko'rinishida yozing`));
+// }
+////////////////////////////////////////////////////////////////////////////////////////
+
+let set = new Set();
+let son = 0;
+let num = savolar.length;
+let num_2;
+let j = 0;
+do {
+  j = Math.floor(Math.random() * savolar.length);
+  set.add(savolar[j]);
+  num_2 = set.size;
+} while (set.size != num);
+
+////////////////////////////////////////////////////////////////////////////////////////////
+let arr = Array.from(set);
+//////////////////////////////////////////////////////////////////////////////////////////
 let togriJavob = 0;
 
 for (let i = 0; i < savolar.length; i++) {
   let javob = prompt(
-    savolar[i].savol +
+    arr[i].savol +
       `\n` +
-      savolar[i].javoblar.join("\n") +
+      arr[i].javoblar.join("\n") +
       `\n agar tugatmoqchi bo'lsangiz "chiqish" degan so'zni kiriting`
   );
 
-  if (savolar[i].natija == javob || javob == savolar[i].natija.toUpperCase()) {
+  if (arr[i].natija == javob || javob == arr[i].natija.toUpperCase()) {
     togriJavob++;
   }
   if (javob == "chiqish") {
     break;
   }
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 alert(`to'g'ri javoblar soni ${togriJavob} ta`);
 
