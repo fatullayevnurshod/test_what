@@ -41,68 +41,98 @@ savolar = [
     natija: "a",
   },
 ];
+
+let sonlar = +prompt(`Menu:
+1.Savol qo'shish
+2.Test ishlash
+3.Chiqish`);
 //////////////////////////////////////////////////////////////////
-let number = +prompt(
-  `Nechta savol kiritasiz savol qo'shmoqchi bo'lmasangiz 0 ni kiriting`
-);
-let savolQosh;
-let arr_1;
-for (let i = 0; i < number; i++) {
-  arr_1 = {
-    savol: prompt(`savol kiriting`),
-    javoblar: [],
-    natija: prompt(`to'ri javob qaysi kalitda`),
-  };
+switch (sonlar) {
+  case 1:
+    const savolQoshish = (savolar) => {
+      console.log(savolar);
+      let number = +prompt(
+        `Nechta savol kiritasiz savol qo'shmoqchi bo'lmasangiz 0 ni kiriting`,
+        0
+      );
+      let savolQosh;
+      let arr_1;
+      for (let i = 0; i < number; i++) {
+        arr_1 = {
+          savol: prompt(`savol kiriting`),
+          javoblar: [],
+          natija: prompt(`to'ri javob qaysi kalitda`),
+        };
 
-  for (let i = 0; i < 4; i++) {
-    savolQosh = prompt(`javoblarni "a:javob" ko'rinishida yozing`);
-    arr_1.javoblar.push(savolQosh);
-  }
-  savolar.push(arr_1);
-}
-////////////////////////////////////////////////////////////////////////////////////////
+        for (let i = 0; i < 4; i++) {
+          savolQosh = prompt(`javoblarni "a:javob" ko'rinishida yozing`);
+          arr_1.javoblar.push(savolQosh);
+        }
+        savolar.push(arr_1);
+      }
+      return savolar;
+    };
+  // break;
+  case 2:
+    const randomSavol = (savolar) => {
+      sonlar == 2 ? (fung = savolar) : (fung = savolQoshish(savolar));
+      let set = new Set();
+      let son = 0;
+      let num = fung.length;
+      let num_2;
+      let j = 0;
+      do {
+        j = Math.floor(Math.random() * fung.length);
+        set.add(fung[j]);
+        num_2 = set.size;
+      } while (set.size != num);
 
-let set = new Set();
-let son = 0;
-let num = savolar.length;
-let num_2;
-let j = 0;
-do {
-  j = Math.floor(Math.random() * savolar.length);
-  set.add(savolar[j]);
-  num_2 = set.size;
-} while (set.size != num);
+      let arr = Array.from(set);
+      return arr;
+    };
 
-////////////////////////////////////////////////////////////////////////////////////////////
-let arr = Array.from(set);
-//////////////////////////////////////////////////////////////////////////////////////////
-let togriJavob = 0;
+    //////////////////////////////////////////////////////////////////////////////////////////
 
-for (let i = 0; i < savolar.length; i++) {
-  let javob = prompt(
-    arr[i].savol +
-      `\n` +
-      arr[i].javoblar.join("\n") +
-      `\n agar tugatmoqchi bo'lsangiz "chiqish" degan so'zni kiriting`
-  );
+    const natijaniChiqar = (savolar) => {
+      let arr = randomSavol(savolar);
+      let togriJavob = 0;
 
-  if (arr[i].natija == javob || javob == arr[i].natija.toUpperCase()) {
-    togriJavob++;
-  }
-  if (javob == "chiqish") {
+      for (let i = 0; i < savolar.length; i++) {
+        let javob = prompt(
+          arr[i].savol +
+            `\n` +
+            arr[i].javoblar.join("\n") +
+            `\n agar tugatmoqchi bo'lsangiz "chiqish" degan so'zni kiriting`
+        );
+
+        if (arr[i].natija == javob || javob == arr[i].natija.toUpperCase()) {
+          togriJavob++;
+        }
+        if (javob == "chiqish") {
+          break;
+        }
+      }
+      /////////////////////////////////////////////////////////////////////////////////////////////////
+
+      alert(`to'g'ri javoblar soni ${togriJavob} ta`);
+
+      if (togriJavob == savolar.length) {
+        alert(
+          `🎉🎊Tabriklaymiz siz barcha ${togriJavob} sini ham toptingiz🎊🎉`
+        );
+      } else {
+        alert(
+          `😢😭Afsuzki siz barcha javoblardan ${togriJavob} tasini topa oldingiz😢😭`
+        );
+      }
+    };
+
+    natijaniChiqar(savolar);
     break;
-  }
-}
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
-alert(`to'g'ri javoblar soni ${togriJavob} ta`);
-
-if (togriJavob == savolar.length) {
-  alert(`🎉🎊Tabriklaymiz siz barcha ${togriJavob} sini ham toptingiz🎊🎉`);
-} else {
-  alert(
-    `😢😭Afsuzki siz barcha javoblardan ${togriJavob} tasini topa oldingiz😢😭`
-  );
+  case 3:
+    break;
+  default:
+    break;
 }
 
 let end = new Date();
