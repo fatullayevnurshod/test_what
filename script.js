@@ -17,30 +17,27 @@ let start = new Date();
 savolar = [
   {
     savol: `o'zbekistonda nechta viloyat bor`,
-    javoblar: ["a: 12", "b: 14", "c: 10", "d: 4"],
-    natija: "a",
+    javoblar: ["12", "14", "10", "4"],
+    natija: "12",
   },
   {
     savol: `5*5=?`,
-    javoblar: ["a: 12", "b: 25", "c: 10", "d: 4"],
-    natija: "b",
+    javoblar: ["12", "25", "10", "4"],
+    natija: "25",
   },
   {
     savol: `Buxoro viloyati necha ming yilik tarixga ega`,
-    javoblar: ["a: 1200", "b: 2000", "c: 2500", "d: 400"],
-    natija: "c",
+    javoblar: ["1200", "2000", "2500", "400"],
+    natija: "2500",
   },
   {
     savol: `Meni tug'ulgan kunim qaysi javobda`,
-    javoblar: [
-      "a: 01.10.2003",
-      "b: 01.10.2005",
-      "c: 12.12.2003",
-      "d: 01.3.2003",
-    ],
-    natija: "a",
+    javoblar: ["01.10.2003", "01.10.2005", "12.12.2003", "01.3.2003"],
+    natija: "01.10.2003",
   },
 ];
+
+// let variant = ["a", "b", "c", "d"];
 
 let sonlar = +prompt(`Menu:
 1.Savol qo'shish
@@ -96,16 +93,27 @@ switch (sonlar) {
     const natijaniChiqar = (savolar) => {
       let arr = randomSavol(savolar);
       let togriJavob = 0;
-
-      for (let i = 0; i < savolar.length; i++) {
+      let j = Math.floor(Math.random() * arr.length);
+      for (let i = 0; i < arr.length; i++) {
         let javob = prompt(
           arr[i].savol +
             `\n` +
-            arr[i].javoblar.join("\n") +
+            `a: ${arr[i].javoblar.at(j - 0)}` +
+            `\n` +
+            `b: ${arr[i].javoblar.at(j - 1)}` +
+            `\n` +
+            `c: ${arr[i].javoblar.at(j - 2)}` +
+            `\n` +
+            `d: ${arr[i].javoblar.at(j - 3)}` +
             `\n agar tugatmoqchi bo'lsangiz "chiqish" degan so'zni kiriting`
         );
+        variant = ["a", "b", "c", "d"];
+        let num_3 = arr[i].javoblar.indexOf(arr[i].natija);
 
-        if (arr[i].natija == javob || javob == arr[i].natija.toUpperCase()) {
+        if (
+          variant.at(j - num_3) == javob ||
+          javob == variant.at(j - num_3).toUpperCase()
+        ) {
           togriJavob++;
         }
         if (javob == "chiqish") {
