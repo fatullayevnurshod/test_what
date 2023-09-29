@@ -111,9 +111,13 @@ do {
           variant = ["a", "b", "c", "d"];
           let num_3 = arr[i].javoblar.indexOf(arr[i].natija);
 
+          const arr_5 = javob.split("");
+
           if (
             variant.at(j - num_3) == javob ||
-            javob == variant.at(j - num_3).toUpperCase()
+            javob == variant.at(j - num_3).toUpperCase() ||
+            arr_5[0] == variant.at(j - num_3).toUpperCase ||
+            arr_5[0] == variant.at(j - num_3)
           ) {
             togriJavob++;
           }
