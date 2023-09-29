@@ -143,7 +143,7 @@ do {
     default:
       break;
   }
-  buyruq = prompt(`Test ni qayta ishlaysizmi"ha" yoki "yoq"`);
+  if (sonlar != 3) buyruq = prompt(`Test ni qayta ishlaysizmi"ha" yoki "yoq"`);
 } while (buyruq == "ha");
 let end = new Date();
 alert(`ketgan vaxt ${end - start}`);
